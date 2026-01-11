@@ -189,4 +189,36 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(url, '_blank');
     });
 
+    // --- 7. SISTEMA DE ZOOM (LIGHTBOX) ---
+    
+    // 1. Criar o elemento do modal dinamicamente (se não existir)
+    if (!document.querySelector('.lightbox-overlay')) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox-overlay';
+        lightbox.innerHTML = '<img src="" class="lightbox-content" alt="Zoom Produto">';
+        document.body.appendChild(lightbox);
+        
+        // Fechar ao clicar
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+    }
+
+    const lightboxOverlay = document.querySelector('.lightbox-overlay');
+    const lightboxImg = document.querySelector('.lightbox-content');
+
+    // 2. Adicionar evento de clique em TODAS as imagens de produtos
+    const productImages = document.querySelectorAll('.img-container img');
+
+    productImages.forEach(img => {
+        img.style.cursor = 'zoom-in'; // Mostra lupa ao passar o mouse
+        
+        img.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita comportamento padrão se tiver link
+            const src = img.getAttribute('src');
+            lightboxImg.setAttribute('src', src);
+            lightboxOverlay.classList.add('active');
+        });
+    });
+
 });

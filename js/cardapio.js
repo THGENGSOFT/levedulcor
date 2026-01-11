@@ -14,6 +14,53 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Configurações
     const WHATSAPP_NUMBER = "5541992355813"; // Seu número
+    // --- 0. VERIFICAR HORÁRIO DE FUNCIONAMENTO ---
+    function checkOpeningHours() {
+        const now = new Date();
+        const day = now.getDay(); // 0 = Domingo, 1 = Segunda, 2 = Terça...
+        const hour = now.getHours();
+        const minutes = now.getMinutes();
+        
+        // Convertemos a hora atual em minutos totais do dia para comparar com precisão (ex: 10:30 = 630 min)
+        const currentTimeInMinutes = (hour * 60) + minutes;
+
+        let isOpen = false;
+
+        // Regras de Horário:
+        // Terça (2) a Sábado (6): 10:30 às 22:00
+        // Domingo (0): 11:30 às 19:00
+        // Segunda (1): Fechado
+
+        if (day >= 2 && day <= 6) {
+            // Terça a Sábado (10:30 = 630min | 22:00 = 1320min)
+            if (currentTimeInMinutes >= 630 && currentTimeInMinutes < 1320) {
+                isOpen = true;
+            }
+        } else if (day === 0) {
+            // Domingo (11:30 = 690min | 19:00 = 1140min)
+            if (currentTimeInMinutes >= 690 && currentTimeInMinutes < 1140) {
+                isOpen = true;
+            }
+        }
+        // Segunda-feira (day 1) permanece isOpen = false
+
+        // Se estiver fechado, mostra aviso
+        if (!isOpen) {
+            const warningHTML = `
+                <div class="status-bar visible">
+                    🕒 Estamos fechados agora. Você pode deixar seu pedido agendado para amanhã!
+                </div>
+            `;
+            // Insere no topo do site
+            document.body.insertAdjacentHTML('afterbegin', warningHTML);
+            
+            // Muda texto do botão do carrinho
+            const whatsBtn = document.getElementById('send-whatsapp');
+            if(whatsBtn) whatsBtn.textContent = 'Agendar Pedido por WhatsApp';
+        }
+    }
+
+    checkOpeningHours();
     
     // --- 1. FILTRO DE CATEGORIAS ---
     const categoryBtns = document.querySelectorAll('.category-btn');

@@ -546,3 +546,23 @@ footer .alerta {
 .item:nth-child(4) { animation-delay: 0.4s; }
 .item:nth-child(5) { animation-delay: 0.5s; }
 /* ... e assim por diante para os primeiros itens */
+/* =========================================
+   10. Barra de Aviso (Loja Fechada)
+   ========================================= */
+.status-bar {
+    background-color: #d9534f; /* Vermelho suave */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2500; /* Acima de tudo */
+    display: none; /* Escondido por padrão */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.status-bar.visible {
+    display: block;
+}

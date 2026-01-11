@@ -78,15 +78,26 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================
-   3. Filtros (Categorias)
+   Filtros "Grudados" (Sticky)
    ========================================= */
 .menu-categories {
     display: flex;
     gap: 10px;
-    margin-bottom: 40px;
-    overflow-x: auto; /* Permite rolar horizontalmente no celular */
-    padding-bottom: 10px;
-    scrollbar-width: none; /* Esconde barra de rolagem no Firefox */
+    margin-bottom: 30px;
+    overflow-x: auto;
+    padding: 15px 0;
+    scrollbar-width: none;
+    
+    /* A MÁGICA ACONTECE AQUI */
+    position: sticky;
+    top: 85px; /* Ajuste conforme a altura do seu header */
+    background-color: var(--cor-fundo); /* Fundo para não misturar com o texto atrás */
+    z-index: 800;
+    margin-left: -15px; /* Gambiarra técnica para cobrir sangria do container */
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .menu-categories::-webkit-scrollbar {
@@ -511,3 +522,27 @@ footer .alerta {
         grid-template-columns: 1fr; /* 1 produto por linha */
     }
 }
+/* Animação de Entrada dos Itens */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.item {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0; /* Começa invisível */
+}
+
+/* Efeito cascata (um aparece depois do outro) */
+.item:nth-child(1) { animation-delay: 0.1s; }
+.item:nth-child(2) { animation-delay: 0.2s; }
+.item:nth-child(3) { animation-delay: 0.3s; }
+.item:nth-child(4) { animation-delay: 0.4s; }
+.item:nth-child(5) { animation-delay: 0.5s; }
+/* ... e assim por diante para os primeiros itens */

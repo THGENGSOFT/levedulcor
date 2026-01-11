@@ -91,23 +91,43 @@ nav a:hover {
 }
 
 /* =========================================
-   3. Seção Hero (Destaque Inicial)
+   NOVA HERO SECTION (Capa de Impacto)
    ========================================= */
 .hero {
-    background: linear-gradient(to bottom, var(--cor-fundo-suave), var(--cor-creme));
+    /* Imagem de fundo com efeito escurecido para ler o texto */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1488477181946-6428a029177b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito Parallax (imagem parada ao rolar) */
     text-align: center;
-    padding: 60px 0;
+    padding: 100px 0; /* Mais altura */
+    color: white;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem; /* Título bem maior */
     margin-bottom: 20px;
+    color: var(--cor-creme); /* Dourado/Creme no título */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero-text {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     max-width: 700px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 40px auto;
+    color: #f0f0f0;
+    font-weight: 300;
+}
+
+/* Ajuste na caixa de informações para ficar translúcida */
+.info-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 800px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .info-box {

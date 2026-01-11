@@ -247,9 +247,10 @@ h1, h2, h3, h4 {
     position: fixed;
     top: 0;
     right: 0;
+    width: 100%;  /* <--- ADICIONE ESTA LINHA AQUI */
     height: 100%;
     z-index: 1000;
-    pointer-events: none; /* Permite clicar no site atrás se o carrinho estiver fechado */
+    pointer-events: none; /* Permite clicar no site atrás */
 }
 
 /* Botão Flutuante do Carrinho */

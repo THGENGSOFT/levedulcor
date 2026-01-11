@@ -1,0 +1,391 @@
+/* =========================================
+   1. Variáveis e Reset (A base do Design)
+   ========================================= */
+:root {
+    /* Paleta da Marca */
+    --cor-creme: #ffd78f;       /* Fundo destaque */
+    --cor-marrom: #766142;      /* Textos e Títulos */
+    --cor-salmao: #e8a69a;      /* Botões e Detalhes */
+    
+    /* Cores de Apoio */
+    --cor-branca: #ffffff;
+    --cor-fundo-suave: #fffcf5; /* Um branco levemente amarelado para não cansar a vista */
+    --sombra-suave: 0 4px 15px rgba(118, 97, 66, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--cor-marrom);
+    background-color: var(--cor-fundo-suave);
+    line-height: 1.6;
+}
+
+/* Container padrão para centralizar o conteúdo */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Títulos com fonte elegante */
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--cor-marrom);
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+/* =========================================
+   2. Cabeçalho (Header)
+   ========================================= */
+header {
+    background-color: var(--cor-branca);
+    box-shadow: var(--sombra-suave);
+    position: sticky; /* Menu fixa no topo ao rolar */
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px; /* Ajuste conforme necessário */
+    width: auto;
+}
+
+nav a {
+    color: var(--cor-marrom);
+    font-weight: 700;
+    margin-left: 20px;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    color: var(--cor-salmao);
+}
+
+.nav-highlight {
+    background-color: var(--cor-creme);
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.nav-highlight:hover {
+    background-color: var(--cor-salmao);
+    color: white !important;
+}
+
+/* =========================================
+   3. Seção Hero (Destaque Inicial)
+   ========================================= */
+.hero {
+    background: linear-gradient(to bottom, var(--cor-fundo-suave), var(--cor-creme));
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.info-box {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px auto;
+    max-width: 800px;
+    border: 1px dashed var(--cor-marrom);
+}
+
+.highlight-text {
+    font-weight: bold;
+    color: var(--cor-salmao);
+    margin-top: 10px;
+    display: block;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+    border: none;
+}
+
+.btn-menu-hero {
+    background-color: var(--cor-marrom);
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 40px;
+}
+
+.btn-menu-hero:hover {
+    background-color: var(--cor-salmao);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #ea1d2c; /* Cor do iFood */
+    color: white;
+}
+
+.btn-outline {
+    border: 2px solid var(--cor-marrom);
+    color: var(--cor-marrom);
+}
+
+.btn-outline:hover {
+    background-color: var(--cor-marrom);
+    color: white;
+}
+
+/* =========================================
+   4. Seção Sobre
+   ========================================= */
+.sobre {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--cor-branca);
+}
+
+.section-desc {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.sobre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card-sobre {
+    padding: 20px;
+    background-color: var(--cor-fundo-suave);
+    border-radius: 15px;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s;
+}
+
+.card-sobre:hover {
+    transform: translateY(-5px);
+}
+
+.card-sobre h4 {
+    color: var(--cor-salmao);
+    font-size: 1.3rem;
+}
+
+/* =========================================
+   5. Seção Destaques (Cardápio Resumo)
+   ========================================= */
+.destaques {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--cor-fundo-suave);
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.item-produto {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s;
+}
+
+.item-produto:hover {
+    transform: scale(1.02);
+}
+
+.item-produto img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Garante que a foto preencha sem distorcer */
+}
+
+.produto-info {
+    padding: 20px;
+}
+
+.produto-info h4 {
+    margin-bottom: 5px;
+}
+
+.menu-call {
+    margin-top: 50px;
+}
+
+.btn-menu-big {
+    background-color: var(--cor-salmao);
+    color: white;
+    font-size: 1.1rem;
+    padding: 15px 30px;
+}
+
+.btn-menu-big:hover {
+    background-color: var(--cor-marrom);
+}
+
+/* =========================================
+   6. Depoimentos
+   ========================================= */
+.depoimentos {
+    padding: 60px 0;
+    background-color: var(--cor-branca);
+    text-align: center;
+}
+
+.grid-depoimentos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.depoimento-card {
+    background-color: var(--cor-fundo-suave);
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 5px solid var(--cor-creme);
+    font-style: italic;
+}
+
+/* =========================================
+   7. Contato e Footer
+   ========================================= */
+.contato {
+    padding: 60px 0;
+    background-color: var(--cor-creme); /* Usando a cor creme forte aqui */
+    text-align: center;
+}
+
+.aviso-importante {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 800px;
+    margin-bottom: 30px;
+    box-shadow: var(--sombra-suave);
+    text-align: left;
+}
+
+.aviso-importante ul {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.aviso-importante li {
+    margin-bottom: 10px;
+}
+
+.alerta {
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.cta-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp { background-color: #25D366; color: white; }
+.btn-instagram { background-color: #C13584; color: white; }
+.btn-email { background-color: var(--cor-marrom); color: white; }
+
+footer {
+    background-color: var(--cor-marrom);
+    color: var(--cor-creme);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* Botão Flutuante WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-float:hover {
+    background-color: #1ebc57;
+}
+
+/* =========================================
+   8. Media Queries (Responsividade Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    nav a {
+        margin-left: 0;
+    }
+
+    .cta-footer {
+        flex-direction: column;
+    }
+}

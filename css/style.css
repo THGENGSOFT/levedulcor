@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth; /* Faz o site deslizar ao clicar nos links do menu */
+    scroll-padding-top: 100px; /* Garante que o menu fixo não tape o título da seção */
+}
 /* =========================================
    1. Variáveis e Reset (A base do Design)
    ========================================= */
@@ -276,10 +280,15 @@ nav a:hover {
 
 .depoimento-card {
     background-color: var(--cor-fundo-suave);
-    padding: 30px;
-    border-radius: 15px;
-    border-left: 5px solid var(--cor-creme);
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(118, 97, 66, 0.1); /* Borda sutil marrom */
     font-style: italic;
+    position: relative;
+    /* Ícone de aspas decorativo */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='%23ffd78f'%3E%3Cpath d='M14.017 21L14.017 18C14.017 16.896 14.353 15.993 15.025 15.291C15.697 14.589 16.63 14.238 17.824 14.238L19.577 14.238L19.577 12.398C19.577 11.238 19.348 10.222 18.89 9.35C18.432 8.478 17.697 7.747 16.685 7.157L17.584 5C19.261 5.923 20.612 7.218 21.637 8.885C22.662 10.552 23.175 12.593 23.175 15.008L23.175 21L14.017 21ZM5.017 21L5.017 18C5.017 16.896 5.353 15.993 6.025 15.291C6.697 14.589 7.63 14.238 8.824 14.238L10.577 14.238L10.577 12.398C10.577 11.238 10.348 10.222 9.89 9.35C9.432 8.478 8.697 7.747 7.685 7.157L8.584 5C10.261 5.923 11.612 7.218 12.637 8.885C13.662 10.552 14.175 12.593 14.175 15.008L14.175 21L5.017 21Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 20px 20px;
 }
 
 /* =========================================
